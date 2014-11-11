@@ -1,0 +1,93 @@
+<html>
+<head>
+	<title>Recursive Fill</title>
+
+	<style type="text/css">
+	* {
+		margin:0px;
+		padding:0px;
+	}
+	body{
+		background-color:black;
+	}
+	.row div{
+		width:50px;
+		height:50px;
+		display:inline-block;
+	}
+	.white{
+		background-color:white;
+	}
+	.red{
+		background-color:red;
+	}
+	.yellow{
+		background-color:yellow;
+	}
+	.blue{
+		background-color:blue;
+	}
+	.green{
+		background-color:green;
+	}
+
+
+	</style>
+</head>
+<body>
+
+	<div id='container'></div>
+
+	<script type="text/javascript">
+		var world = [
+			[0,0,0,0,0,0,0,0,0,0],
+			[0,0,0,0,1,0,0,0,0,0],
+			[0,2,0,0,1,0,0,0,0,0],
+			[0,2,0,0,1,1,1,1,0,0],
+			[0,2,2,0,1,0,0,0,0,3],
+			[0,2,2,0,1,0,0,3,3,3],
+			[0,0,0,0,1,0,0,3,3,3]];
+
+		var mapping = {
+			0: 'white',
+			1: 'red',
+			2: 'yellow',
+			3: 'blue',
+			4: 'green'
+		}
+
+		function drawWorld()
+		{
+			var output = '';
+			for(var i=0; i<world.length; i++)
+			{
+				output += '<div class="row">';
+				for(var j=0; j<world[i].length; j++)
+				{
+					output += "<div class='"+mapping[world[i][j]]+"'></div>";
+				}
+				output += '</div>';
+			}
+			document.getElementById('container').innerHTML = output;
+			console.log(output);
+		}
+
+		document.onclick = function(e)
+		{
+			console.log('Coordinate Clicked', e.x, e.y);
+			console.log('X, Y', Math.floor(e.x/50), Math.floor(e.y/50));
+			startFill(Math.floor(e.x/50), Math.floor(e.y/50), 4);
+
+		}
+
+		function startFill(x,y,color)
+		{
+			
+		}
+
+		drawWorld();
+
+	</script>
+
+</body>
+</html>

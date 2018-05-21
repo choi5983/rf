@@ -69,7 +69,7 @@
 				output += '</div>';
 			}
 			document.getElementById('container').innerHTML = output;
-			console.log(output);
+			// console.log(output);
 		}
 
 		document.onclick = function(e)
@@ -88,6 +88,14 @@
 
 		function startFill(x,y,original_color, color)
 		{
+
+			//your recursion codes here
+
+			world[y][x] = color;
+
+			// your recursion codes here
+
+			drawWorld();
 			
 		}
 

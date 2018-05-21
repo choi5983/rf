@@ -69,7 +69,7 @@
 				output += '</div>';
 			}
 			document.getElementById('container').innerHTML = output;
-			console.log(output);
+			// console.log(output);
 		}
 
 		document.onclick = function(e)
@@ -83,12 +83,26 @@
 			// console.log('Original Color', world[y][x]);
 
 			console.log('Replace color', world[y][x], ' with color 4 starting from x:', x, 'y:', y);
-			startFill(x, y, world[y][x], 4);
+			fill(x, y, world[y][x], 4);
 		}
 
-		function startFill(x,y,original_color, color)
+		function fill(x,y,original_color, color)
 		{
-			
+
+			//boundary restrictions
+			if(y<0 || y>=world.length || x<0 || x>=10)
+				return false;
+
+			//if the current color is NOT the same as the original color you're trying to replace, get out of the fill function
+			if(world[y][x] != original_color)
+				return false;
+
+			world[y][x] = color;
+			fill(x,y-1,original_color, color);
+			fill(x,y+1,original_color, color);
+			fill(x-1,y,original_color, color);
+			fill(x+1,y,original_color, color);
+			drawWorld();
 		}
 
 		drawWorld();

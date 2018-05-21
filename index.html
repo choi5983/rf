@@ -75,12 +75,17 @@
 		document.onclick = function(e)
 		{
 			console.log('Coordinate Clicked', e.x, e.y);
-			console.log('X, Y', Math.floor(e.x/50), Math.floor(e.y/50));
-			startFill(Math.floor(e.x/50), Math.floor(e.y/50), 4);
+
+			var x = Math.floor(e.x/50);
+			var y = Math.floor(e.y/50);
+
+			console.log('X, Y', x, y);
+			console.log('Original Color', world[y][x]);
+			startFill(x, y, world[y][x], 4);
 
 		}
 
-		function startFill(x,y,color)
+		function startFill(x,y,original_color, color)
 		{
 			
 		}
